@@ -1,5 +1,6 @@
 const staticCache = 'site-static';
 const dynamicCache = 'site-dynamic';
+const dynamicCacheSize = 15;
 const assets = [
     '/',
     '/index.html',
@@ -14,6 +15,16 @@ const assets = [
     'https://fonts.gstatic.com/s/materialicons/v135/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2'
 ];
 
+// Cache Size Limit
+const limitCacheSize = (name, size) => {
+    caches.open(name).then(cache => {
+        cache.keys().then(keys => {
+            if (keys.length > size) {
+                cache.delete(keys[0]).then(limitCacheSize(name, size));
+            }
+        })
+    })
+}
 // Install Event
 self.addEventListener('install', (evt) => {
     evt.waitUntil(
@@ -40,6 +51,7 @@ self.addEventListener('fetch', (evt) => {
             return cacheRes || fetch(evt.request).then(fetchRes => {
                 return caches.open(dynamicCache).then(cache => {
                     cache.put(evt.request.url, fetchRes.clone());
+                    limitCacheSize(dynamicCache, dynamicCacheSize);
                     return fetchRes;
                 })
             });
