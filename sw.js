@@ -10,7 +10,7 @@ const assets = [
     '/js/app.js',
     '/js/materialize.min.js',
     '/js/ui.js',
-    //'/img/content.png',
+    '/img/content.png',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
     'https://fonts.gstatic.com/s/materialicons/v135/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2'
 ];
