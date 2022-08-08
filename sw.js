@@ -3,6 +3,7 @@ const dynamicCache = 'site-dynamic';
 const assets = [
     '/',
     '/index.html',
+    '/pages/fallback.html',
     '/css/materialize.min.css',
     '/css/styles.css',
     '/js/app.js',
@@ -26,7 +27,7 @@ self.addEventListener('activate', (evt) => {
     evt.waitUntil(
         caches.keys().then(keys => {
             return Promise.all(keys
-                .filter(key => key !== staticCache)
+                .filter(key => key !== staticCache && key !== dynamicCache)
                 .map(key => caches.delete(key))
             )
         })
@@ -42,6 +43,10 @@ self.addEventListener('fetch', (evt) => {
                     return fetchRes;
                 })
             });
+        }).catch(() => {
+            if (evt.request.url.indexOf('.html') > -1) { 
+                return caches.match('/pages/fallback.html');
+            }
         })
     );
 });
