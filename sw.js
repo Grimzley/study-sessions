@@ -46,7 +46,7 @@ self.addEventListener('activate', (evt) => {
 });
 // Fetch Event
 self.addEventListener('fetch', (evt) => {
-    evt.respondWith(
+    /*evt.respondWith(
         caches.match(evt.request).then(cacheRes => {
             return cacheRes || fetch(evt.request).then(fetchRes => {
                 return caches.open(dynamicCache).then(cache => {
@@ -60,5 +60,5 @@ self.addEventListener('fetch', (evt) => {
                 return caches.match('/pages/fallback.html');
             }
         })
-    );
+    );*/
 });
