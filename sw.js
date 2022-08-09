@@ -46,19 +46,21 @@ self.addEventListener('activate', (evt) => {
 });
 // Fetch Event
 self.addEventListener('fetch', (evt) => {
-    /*evt.respondWith(
-        caches.match(evt.request).then(cacheRes => {
-            return cacheRes || fetch(evt.request).then(fetchRes => {
-                return caches.open(dynamicCache).then(cache => {
-                    cache.put(evt.request.url, fetchRes.clone());
-                    limitCacheSize(dynamicCache, dynamicCacheSize);
-                    return fetchRes;
-                })
-            });
-        }).catch(() => {
-            if (evt.request.url.indexOf('.html') > -1) { 
-                return caches.match('/pages/fallback.html');
-            }
-        })
-    );*/
+    if (evt.request.url.indexOf('firestore.googleapis.com') === -1) {
+        evt.respondWith(
+            caches.match(evt.request).then(cacheRes => {
+                return cacheRes || fetch(evt.request).then(fetchRes => {
+                    return caches.open(dynamicCache).then(cache => {
+                        cache.put(evt.request.url, fetchRes.clone());
+                        limitCacheSize(dynamicCache, dynamicCacheSize);
+                        return fetchRes;
+                    })
+                });
+            }).catch(() => {
+                if (evt.request.url.indexOf('.html') > -1) { 
+                    return caches.match('/pages/fallback.html');
+                }
+            })
+        );
+    }
 });
