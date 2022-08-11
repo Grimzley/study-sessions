@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelectorAll('.side-form');
     M.Sidenav.init(form, {edge: 'left'});
 });
-// Render Event Data
-const renderEvent = (data, id) => {
+// Add Event
+const addEvent = (data, id) => {
     const html = `
         <div class="card-panel content white row" data-id="${id}">
             <img src="/img/content.png" alt="content img">
@@ -23,4 +23,9 @@ const renderEvent = (data, id) => {
         </div>
     `;
     events.innerHTML += html;
+};
+// Remove Event
+const removeEvent = (id) => {
+    const event = document.querySelector(`.content[data-id="${id}"]`);
+    event.remove();
 };

@@ -13,9 +13,31 @@ db.collection('events').onSnapshot((snapshot) => {
     snapshot.docChanges().forEach((change) => {
         if (change.type === 'added') {
             // add data
-            renderEvent(change.doc.data(), change.doc.id);
+            addEvent(change.doc.data(), change.doc.id);
         }else if (change.type === 'removed') {
             // remove data
+            removeEvent(change.doc.id);
         }
     })
 });
+// Add Event
+const form = document.querySelector('form');
+form.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    const event = {
+        title: form.title.value,
+        info: form.info.value
+    };
+    db.collection('events').add(event)
+        .catch(err => console.log(err));
+    form.title.value = '';
+    form.info.value = '';
+})
+// Remove Event
+const eventContainer = document.querySelector('.events');
+eventContainer.addEventListener('click', evt => {
+    if (evt.target.tagName === 'I') {
+        const id = evt.target.getAttribute('data-id');
+        db.collection('events').doc(id).delete();
+    }
+})
