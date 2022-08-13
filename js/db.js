@@ -26,16 +26,23 @@ form.addEventListener('submit', (evt) => {
     evt.preventDefault();
     const event = {
         title: form.title.value,
-        info: form.info.value
+        info: form.info.value,
+        location: form.location.value,
+        date: form.date.value,
+        time: form.time.value
     };
     db.collection('events').add(event)
         .catch(err => console.log(err));
     form.title.value = '';
     form.info.value = '';
+    form.location.value = '';
+    form.date.value = '';
+    form.time.value = '';
 })
 // Remove Event
 const eventContainer = document.querySelector('.events');
 eventContainer.addEventListener('click', evt => {
+    console.log(evt);
     if (evt.target.tagName === 'I') {
         const id = evt.target.getAttribute('data-id');
         db.collection('events').doc(id).delete();

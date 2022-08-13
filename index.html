@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#FFE1C4">
-    <title>App Name Pending</title>
+    <title>Study Sessions</title>
     <!-- CSS & JS Links -->
     <link type="text/css" href="/css/materialize.min.css" rel="stylesheet">
     <link type="text/css" href="/css/styles.css" rel="stylesheet">
@@ -14,13 +14,13 @@
     <link rel="manifest" href="/manifest.json">
     <!-- iOS Support -->
     <link rel="apple-touch-icon" href="/img/icons/96x96.png">
-    <meta name="apple-mobile-web-app-status-bar" content="#AA7700">
+    <meta name="apple-mobile-web-app-status-bar" content="#77AA00">
 </head>
 <body class="grey lighten-4">
     <!-- Header -->
     <nav class="z-depth-0">
         <div class="nav-wrapper container">
-            <a href="/">App<span>Name</span></a>
+            <a href="/">Study<span>Sessions</span></a>
             <span class="right grey-text text-darken-1">
                 <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
             </span>
@@ -28,39 +28,53 @@
     </nav>
     <!-- Menu -->
     <ul id="side-menu" class="sidenav side-menu">
-        <li><a class="subheader">AppName</a></li>
+        <li><a class="subheader">Study Sessions</a></li>
         <li><a href="/" class="waves-effect">Home</a></li>
-        <li><a href="/pages/about.html" class="waves-effect">About</a></li>
+        <li><a href="/" class="waves-effect">Profile</a></li>
+        <li><a href="/" class="waves-effect">Friends</a></li>
         <li><div class="divider"></div></li>
+        <li><a href="/pages/about.html" class="waves-effect">
+            <i class="material-icons">info_outline</i>About</a></li>
         <li>
             <a href="/pages/contact.html" class="waves-effect">
-                <i class="material-icons">mail_outline</i>
-                Contact
+                <i class="material-icons">mail_outline</i>Contact
             </a>
         </li>
     </ul>
-    <!-- Content -->
+    <!-- Events -->
     <div class="events container grey-text text-darken-1">
-        <h6 class="center">Content</h6>
+        <h6 class="center">My Events</h6>
     </div>
-    <!-- Add Content Button -->
+    <!-- Add Event Button -->
     <div class="center">
         <a class="btn-floating btn small add-btn sidenav-trigger" data-target="side-form">
             <i class="material-icons">add</i>
         </a>
     </div>
-    <!-- Add Content -->
+    <!-- Add Event Form -->
     <div id="side-form" class="sidenav side-form">
-        <form class="add-content container section">
-            <h6>New Content</h6>
+        <form class="add-event container section">
+            <h6>Add New Event</h6>
             <div class="divider"></div>
             <div class="input-field">
-                <input placeholder="idk" id="title" type="text" class="validate">
+                <input placeholder="Title" id="title" type="text" class="validate" required>
                 <label for="title">Title</label>
             </div>
             <div class="input-field">
-                <input placeholder="idk" id="info" type="text" class="validate">
+                <input placeholder="Information" id="info" type="text" class="validate">
                 <label for="info">Information</label>
+            </div>
+            <div class="input-field">
+                <input placeholder="Location" id="location" type="text" class="validate">
+                <label for="info">Location</label>
+            </div>
+            <div class="input-field">
+                <input id="date" type="date" class="validate" required>
+                <label for="info">Date</label>
+            </div>
+            <div class="input-field">
+                <input id="time" type="time" class="validate">
+                <label for="info">Time</label>
             </div>
             <div class="input-field center">
                 <button class="btn-small">Add</button>

@@ -1,10 +1,10 @@
 {
-    "name": "App Name",
-    "short_name": "AN",
+    "name": "Study Sessions",
+    "short_name": "StudySessions",
     "start_url": "/index.html",
     "display": "standalone",
-    "background_color": "#FFE9D2",
-    "theme_color": "#FFE1C4",
+    "background_color": "#4D982A",
+    "theme_color": "#ADBC74",
     "orientation": "portrait-primary",
     "icons": [
         {
