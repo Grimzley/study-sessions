@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 // Convert 24 Hour Time to 12 Hour Time
 const convert24hourto12hour = (time) => {
+    if (time.length === 0) {
+        return time;
+    }
     const time_split = time.split(':');
     let ampm = "AM"
     if (time_split[0] >= 12) {
@@ -26,10 +29,7 @@ const convert24hourto12hour = (time) => {
 // Add Event
 const addEvent = (data, id) => {
     let date = (new Date(data.date + 'T00:00:00')).toString().split(' ').slice(0, 4).join(' ');
-    let time = data.time
-    if (data.time.length != 0) {
-        time = convert24hourto12hour(data.time);
-    }
+    let time = convert24hourto12hour(data.time)
     const html = `
         <div class="card-panel event white row" data-id="${id}">
             <img src="/img/content.png" alt="img">

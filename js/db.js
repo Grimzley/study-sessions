@@ -9,7 +9,7 @@ db.enablePersistence()
     })
 
 // Realtime Data Listener
-db.collection('events').onSnapshot((snapshot) => {
+db.collection('events').orderBy('date').onSnapshot((snapshot) => {
     snapshot.docChanges().forEach((change) => {
         if (change.type === 'added') {
             // add data
@@ -42,7 +42,6 @@ form.addEventListener('submit', (evt) => {
 // Remove Event
 const eventContainer = document.querySelector('.events');
 eventContainer.addEventListener('click', evt => {
-    console.log(evt);
     if (evt.target.tagName === 'I') {
         const id = evt.target.getAttribute('data-id');
         db.collection('events').doc(id).delete();
