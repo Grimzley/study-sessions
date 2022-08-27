@@ -7,7 +7,6 @@ db.enablePersistence()
             console.log('persistence is not available')
         }
     })
-
 // Realtime Data Listener
 db.collection('events').orderBy('date').onSnapshot((snapshot) => {
     snapshot.docChanges().forEach((change) => {

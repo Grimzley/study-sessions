@@ -4,12 +4,16 @@ const dynamicCacheSize = 15;
 const assets = [
     '/',
     '/index.html',
+    '/pages/home.html',
+    '/pages/signup.html',
     '/pages/fallback.html',
     '/css/materialize.min.css',
     '/css/styles.css',
     '/js/app.js',
     '/js/materialize.min.js',
     '/js/ui.js',
+    '/js/login.js',
+    '/js/signup.js',
     '/img/content.png',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
     'https://fonts.gstatic.com/s/materialicons/v135/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2'

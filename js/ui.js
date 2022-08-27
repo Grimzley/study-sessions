@@ -1,5 +1,4 @@
 const events = document.querySelector('.events');
-
 document.addEventListener('DOMContentLoaded', function() {
     // Menu
     const menu = document.querySelectorAll('.side-menu');
@@ -52,3 +51,10 @@ const removeEvent = (id) => {
     const event = document.querySelector(`.event[data-id="${id}"]`);
     event.remove();
 };
+// Logout
+const logout = document.querySelector('#logout');
+logout.addEventListener('click', (evt) => {
+    auth.signOut().then(() => {
+        console.log('user signed out');
+    });
+});

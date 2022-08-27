@@ -20,69 +20,29 @@
     <!-- Header -->
     <nav class="z-depth-0">
         <div class="nav-wrapper container">
-            <a href="/">Study<span>Sessions</span></a>
-            <span class="right grey-text text-darken-1">
-                <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
-            </span>
+            <a href="#">Study<span>Sessions</span></a>
         </div>
     </nav>
-    <!-- Menu -->
-    <ul id="side-menu" class="sidenav side-menu">
-        <li><a class="subheader">Study Sessions</a></li>
-        <li><a href="/" class="waves-effect">Home</a></li>
-        <li><a href="/" class="waves-effect">Profile</a></li>
-        <li><a href="/" class="waves-effect">Friends</a></li>
-        <li><a href="/login.html" class="waves-effect">Logout</a></li>
-        <li><div class="divider"></div></li>
-        <li><a href="/pages/about.html" class="waves-effect">
-            <i class="material-icons">info_outline</i>About</a></li>
-        <li>
-            <a href="/pages/contact.html" class="waves-effect">
-                <i class="material-icons">mail_outline</i>Contact
-            </a>
-        </li>
-    </ul>
-    <!-- Events -->
-    <div class="events container grey-text text-darken-1">
-        <h6 class="center">My Events</h6>
-    </div>
-    <!-- Add Event Button -->
-    <div class="center">
-        <a class="btn-floating btn small add-btn sidenav-trigger" data-target="side-form">
-            <i class="material-icons">add</i>
-        </a>
-    </div>
-    <!-- Add Event Form -->
-    <div id="side-form" class="sidenav side-form">
-        <form class="add-event container section">
-            <h6>Add New Event</h6>
-            <div class="divider"></div>
+    <!-- Login Form -->
+    <div class="container">
+        <h4>Log In</h4>
+        <form id="login-form">
             <div class="input-field">
-                <input placeholder="Title" id="title" type="text" class="validate" required>
-                <label for="title">Title</label>
+                <input type="email" id="login-email" required />
+                <label for="login-email">Email address</label>
             </div>
             <div class="input-field">
-                <input placeholder="Information" id="info" type="text" class="validate">
-                <label for="info">Information</label>
+                <input type="password" id="login-password" required />
+                <label for="login-password">Password</label>
             </div>
-            <div class="input-field">
-                <input placeholder="Location" id="location" type="text" class="validate">
-                <label for="location">Location</label>
+            <div>
+                <p>New to Study Sessions? <a href="/pages/signup.html">Sign Up Here</a></p>
             </div>
-            <div class="input-field">
-                <input id="date" type="date" class="validate" required>
-                <label for="date">Date</label>
-            </div>
-            <div class="input-field">
-                <input id="time" type="time" class="validate">
-                <label for="time">Time</label>
-            </div>
-            <div class="input-field center">
-                <button class="btn-small">Add</button>
+            <div>
+                <button class="btn green darken-2 z-depth-0">Log In</button>
             </div>
         </form>
     </div>
-    <!-- Firestore Database -->
     <!-- Firestore Database -->
     <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-firestore.js"></script>
@@ -105,7 +65,6 @@
         const auth = firebase.auth();
     </script>
     <script src="/js/app.js"></script>
-    <script src="/js/db.js"></script>
-    <script src="/js/ui.js"></script>
+    <script src="/js/login.js"></script>
 </body>
 </html>
