@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Form
     const form = document.querySelectorAll('.side-form');
     M.Sidenav.init(form, {edge: 'left'});
+    // Collapsible
+    const collapse = document.querySelectorAll('.collapsible');
+    M.Collapsible.init(collapse);
 });
 // Convert 24 Hour Time to 12 Hour Time
 const convert24hourto12hour = (time) => {
@@ -22,6 +25,8 @@ const convert24hourto12hour = (time) => {
                 time_split[0] = '0' + time_split[0];
             }
         }
+    }else if (time_split[0] === '00') {
+        time_split[0] = '12';
     }
     return time_split[0] + ':' + time_split[1] + ' ' + ampm;
 };
@@ -30,19 +35,25 @@ const addEvent = (data, id) => {
     let date = (new Date(data.date + 'T00:00:00')).toString().split(' ').slice(0, 4).join(' ');
     let time = convert24hourto12hour(data.time)
     const html = `
-        <div class="card-panel event white row" data-id="${id}">
-            <img src="/img/content.png" alt="img">
-            <div class="content-details">
-                <div class="event-title">${data.title}</div>
-                <div class="event-info">${data.info}</div>
-                <div class="event-info">${data.location}</div>
-                <div class="event-info">${date}</div>
-                <div class="event-info">${time}</div>
-            </div>  
-            <div class="event-delete">
-                <i class="material-icons" data-id="${id}">delete_outline</i>
+        <li class="event" data-id="${id}">
+            <div class="collapsible-header card-panel white row">
+                <img src="/img/content.png" alt="img">
+                <div>
+                    <div class="event-title">${data.title}</div>
+                    <div class="event-info">${date}</div>
+                </div>
+                <div class="event-delete">
+                    <i class="material-icons" data-id="${id}">delete_outline</i>
+                </div>
             </div>
-        </div>
+            <div class="collapsible-body white">
+                <div>
+                    <div class="event-info">${data.info}</div>
+                    <div class="event-info">${data.location}</div>
+                    <div class="event-info">${time}</div>
+                </div>
+            </div>
+        </li>
     `;
     events.innerHTML += html;
 };
@@ -54,7 +65,5 @@ const removeEvent = (id) => {
 // Logout
 const logout = document.querySelector('#logout');
 logout.addEventListener('click', (evt) => {
-    auth.signOut().then(() => {
-        console.log('user signed out');
-    });
+    auth.signOut();
 });
