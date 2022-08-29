@@ -9,6 +9,12 @@ signup.addEventListener('submit', (evt) => {
     const password = signup['signup-password'].value;
     // Create User
     auth.createUserWithEmailAndPassword(email, password).then(cred => {
+        return db.collection('users').doc(cred.user.uid).set({
+            name: firstName + ' ' + lastName
+        });
+    }).then(() => {
         window.location.replace('/pages/home.html');
+    }).catch((err) => {
+        console.log(err);
     });
 })

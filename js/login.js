@@ -8,5 +8,7 @@ login.addEventListener('submit', (evt) => {
     // Login User
     auth.signInWithEmailAndPassword(email, password).then(cred => {
         window.location.replace('/pages/home.html');
+    }).catch((err) => {
+        console.log(err);
     }); 
 })
