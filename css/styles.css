@@ -43,11 +43,24 @@ nav .sidenav-trigger {
     grid-area: image;
     max-width: 60px;
 }
+.event-details {
+    grid-area: details;
+    border: none;
+}
+.event-edit {
+    grid-area: delete;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
 .event-delete {
     grid-area: delete;
     position: absolute;
     bottom: 0px;
     right: 0px;
+}
+.event-edit i {
+    font-size: 18px;
 }
 .event-delete i {
     font-size: 18px;
@@ -70,6 +83,10 @@ input {
     -webkit-box-shadow: none !important;
 }
 .side-form button {
+    background: var(--title);
+    box-shadow: 1px 1px 3px rgba(90, 90, 90, 0.2);
+}
+.side-edit button {
     background: var(--title);
     box-shadow: 1px 1px 3px rgba(90, 90, 90, 0.2);
 }

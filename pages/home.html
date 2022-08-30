@@ -103,6 +103,39 @@
             </div>
         </form>
     </div>
+    <!-- Edit Event Form -->
+    <div id="side-edit" class="sidenav side-edit">
+        <form class="edit-event container section">
+            <h6>Edit Event</h6>
+            <div class="divider"></div>
+            <div class="input-field">
+                <input placeholder="Title" id="title" type="text" class="validate" required>
+                <label for="title">Title</label>
+            </div>
+            <div class="input-field">
+                <input placeholder="Information" id="info" type="text" class="validate">
+                <label for="info">Information</label>
+            </div>
+            <div class="input-field">
+                <input placeholder="Location" id="location" type="text" class="validate">
+                <label for="location">Location</label>
+            </div>
+            <div class="input-field">
+                <input id="date" type="date" class="validate" required>
+                <label for="date">Date</label>
+            </div>
+            <div class="input-field">
+                <input id="time" type="time" class="validate">
+                <label for="time">Time</label>
+            </div>
+            <div class=""input-field>
+                <input id="uid" type="hidden" class="validate">
+            </div>
+            <div class="input-field center">
+                <button class="btn-small">Update</button>
+            </div>
+        </form>
+    </div>
     <!-- Firestore Database -->
     <!-- Firestore Database -->
     <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-app.js"></script>

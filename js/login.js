@@ -9,7 +9,6 @@ login.addEventListener('submit', (evt) => {
     auth.signInWithEmailAndPassword(email, password).then(cred => {
         window.location.replace('/pages/home.html');
     }).catch((err) => {
-        const loginError = document.querySelector('#login-error');
-        loginError.innerHTML = err.message;
+        login.querySelector('.error').innerHTML = err.message;
     }); 
 })

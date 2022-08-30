@@ -6,11 +6,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Form
     const form = document.querySelectorAll('.side-form');
     M.Sidenav.init(form, {edge: 'left'});
+    // Edit
+    const edit = document.querySelectorAll('.side-edit');
+    M.Sidenav.init(edit, {edge: 'left'});
     // Collapsible
     const collapse = document.querySelectorAll('.collapsible');
     M.Collapsible.init(collapse);
 });
-// Convert 24 Hour Time to 12 Hour Time
 const convert24hourto12hour = (time) => {
     if (time.length === 0) {
         return time;
@@ -30,17 +32,35 @@ const convert24hourto12hour = (time) => {
     }
     return time_split[0] + ':' + time_split[1] + ' ' + ampm;
 };
+const convert12HourTo24Hour = (time) => {
+    if (time.length === 0) {
+        return time;
+    }
+    const ampm = time.split(' ');
+    const time_split = ampm[0].split(':');
+    if (ampm[1] === 'PM') {
+        time_split[0] = parseInt(time_split[0]) + 12;
+    }else if (time_split[0] === '12') {
+        time_split[0] = '00';
+    }
+    return time_split[0] + ':' + time_split[1];
+}
 // Add Event
 const addEvent = (data, id) => {
     let date = (new Date(data.date + 'T00:00:00')).toString().split(' ').slice(0, 4).join(' ');
     let time = convert24hourto12hour(data.time)
     const html = `
         <li class="event" data-id="${id}">
-            <div class="collapsible-header card-panel white row">
+            <div class="card-panel white row">
                 <img src="/img/content.png" alt="img">
-                <div>
-                    <div class="event-title">${data.title}</div>
-                    <div class="event-info">${date}</div>
+                <div class="collapsible-header event-details">
+                    <div>
+                        <div class="event-title">${data.title}</div>
+                        <div class="event-info event-date">${date}</div>
+                    </div>
+                </div>
+                <div class="event-edit sidenav-trigger" data-target="side-edit">
+                    <i class="material-icons" data-id="${id}">edit</i>
                 </div>
                 <div class="event-delete">
                     <i class="material-icons" data-id="${id}">delete_outline</i>
@@ -48,14 +68,23 @@ const addEvent = (data, id) => {
             </div>
             <div class="collapsible-body white">
                 <div>
-                    <div class="event-info">${data.info}</div>
-                    <div class="event-info">${data.location}</div>
-                    <div class="event-info">${time}</div>
+                    <div class="event-info event-information">${data.info}</div>
+                    <div class="event-info event-location">${data.location}</div>
+                    <div class="event-info event-time">${time}</div>
                 </div>
             </div>
         </li>
     `;
     events.innerHTML += html;
+};
+// Edit Event
+const editEvent = (data, id) => {
+    const event = document.querySelector(`.event[data-id="${id}"]`);
+    event.querySelector('.event-title').innerHTML = data.title;
+    event.querySelector('.event-date').innerHTML = data.date;
+    event.querySelector('.event-information').innerHTML = data.info;
+    event.querySelector('.event-location').innerHTML = data.location;
+    event.querySelector('.event-time').innerHTML = data.time;
 };
 // Remove Event
 const removeEvent = (id) => {
