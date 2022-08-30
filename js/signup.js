@@ -15,6 +15,7 @@ signup.addEventListener('submit', (evt) => {
     }).then(() => {
         window.location.replace('/pages/home.html');
     }).catch((err) => {
-        console.log(err);
+        const signUpError = document.querySelector('#signup-error');
+        signUpError.innerHTML = err.message;
     });
 })

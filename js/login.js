@@ -9,6 +9,7 @@ login.addEventListener('submit', (evt) => {
     auth.signInWithEmailAndPassword(email, password).then(cred => {
         window.location.replace('/pages/home.html');
     }).catch((err) => {
-        console.log(err);
+        const loginError = document.querySelector('#login-error');
+        loginError.innerHTML = err.message;
     }); 
 })
