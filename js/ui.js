@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Edit
     const edit = document.querySelectorAll('.side-edit');
     M.Sidenav.init(edit, {edge: 'left'});
+    // Modal
+    const modal = document.querySelectorAll('.modal');
+    M.Modal.init(modal);
     // Collapsible
     const collapse = document.querySelectorAll('.collapsible');
     M.Collapsible.init(collapse);
@@ -57,14 +60,13 @@ const addEvent = (data, id) => {
                     <div>
                         <div class="event-title">${data.title}</div>
                         <div class="event-info event-date">${date}</div>
+                        <div>
+                            <i class="material-icons event-dropdown">arrow_drop_down</i>
+                        </div>
                     </div>
                 </div>
-                <div class="event-edit sidenav-trigger" data-target="side-edit">
-                    <i class="material-icons" data-id="${id}">edit</i>
-                </div>
-                <div class="event-delete">
-                    <i class="material-icons" data-id="${id}">delete_outline</i>
-                </div>
+                <i class="material-icons event-edit sidenav-trigger" data-target="side-edit" data-id="${id}">edit</i>
+                <i class="material-icons event-delete modal-trigger" data-target="modal-delete" data-id="${id}">delete_outline</i>
             </div>
             <div class="collapsible-body white">
                 <div>

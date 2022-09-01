@@ -99,7 +99,7 @@
                 <label for="time">Time</label>
             </div>
             <div class="input-field center">
-                <button class="btn-small">Add</button>
+                <button class="add-btn btn-small">Add</button>
             </div>
         </form>
     </div>
@@ -132,9 +132,25 @@
                 <input id="uid" type="hidden" class="validate">
             </div>
             <div class="input-field center">
-                <button class="btn-small">Update</button>
+                <button class="add-btn btn-small">Update</button>
             </div>
         </form>
+    </div>
+    <!-- Delete Event Form -->
+    <div id="modal-delete" class="modal">
+        <div class="modal-content center">
+            <form class="delete-event delete-panel container section">
+                <div class="delete header grey-text text-darken-1">
+                    <h6>Delete Event: <span class="title">test</span>?</h6>
+                </div>
+                <div class="input-field delete-confirm">
+                    <p class="btn-small green confirm">Yes</p>
+                </div>
+                <div class="input-field delete-cancel">
+                    <p class="btn-small red cancel">No</p>
+                </div>
+            </form>
+        </div>
     </div>
     <!-- Firestore Database -->
     <!-- Firestore Database -->

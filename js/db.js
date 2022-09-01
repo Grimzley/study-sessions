@@ -56,9 +56,24 @@ auth.onAuthStateChanged(user => {
                 time: update.time.value,
             }).catch(err => console.log(err));
         });
+        // Confirm Delete Event
+        const confirm = document.querySelector('.confirm');
+        confirm.addEventListener('click', evt => {
+            const id = evt.target.getAttribute('data-id');
+            db.collection('events').doc(id).delete();
+            const modal = document.querySelector('#modal-delete');
+            M.Modal.getInstance(modal).close();
+        });
+        // Cancel Delete Event
+        const cancel = document.querySelector('.cancel');
+        cancel.addEventListener('click', evt => {
+            const modal = document.querySelector('#modal-delete');
+            M.Modal.getInstance(modal).close();
+        });
         const eventContainer = document.querySelector('.events');
         eventContainer.addEventListener('click', evt => {
-            if (evt.target.tagName === 'I') {
+            if (evt.target.classList.contains('event-edit')) {
+                // Edit Event
                 const id = evt.target.getAttribute('data-id');
                 const event = document.querySelector(`.event[data-id="${id}"]`);
                 update.title.value = event.querySelector('.event-title').innerHTML;
@@ -67,9 +82,13 @@ auth.onAuthStateChanged(user => {
                 update.date.valueAsDate = new Date(event.querySelector('.event-date').innerHTML);
                 update.time.value = convert12HourTo24Hour(event.querySelector('.event-time').innerHTML);
                 update.uid.value = id;
-            }else {
-                // Remove Event
-                //db.collection('events').doc(id).delete();
+            }else if (evt.target.classList.contains('event-delete')) {
+                // Delete Event
+                const id = evt.target.getAttribute('data-id');
+                confirm.setAttribute('data-id', id);
+                const title = document.querySelector('.title');
+                const event = document.querySelector(`.event[data-id="${id}"]`);
+                title.innerHTML = event.querySelector('.event-title').innerHTML;
             }
         });
     }
