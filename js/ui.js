@@ -78,6 +78,8 @@ const addEvent = (data, id) => {
         </li>
     `;
     events.innerHTML += html;
+    const form = document.querySelector('#side-form');
+    M.Sidenav.getInstance(form).close();
 };
 // Edit Event
 const editEvent = (data, id) => {
@@ -87,6 +89,8 @@ const editEvent = (data, id) => {
     event.querySelector('.event-information').innerHTML = data.info;
     event.querySelector('.event-location').innerHTML = data.location;
     event.querySelector('.event-time').innerHTML = data.time;
+    const form = document.querySelector('#side-edit');
+    M.Sidenav.getInstance(form).close();
 };
 // Remove Event
 const removeEvent = (id) => {
