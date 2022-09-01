@@ -86,7 +86,7 @@ auth.onAuthStateChanged(user => {
                 // Delete Event
                 const id = evt.target.getAttribute('data-id');
                 confirm.setAttribute('data-id', id);
-                const title = document.querySelector('.title');
+                const title = document.querySelector('.delete-title');
                 const event = document.querySelector(`.event[data-id="${id}"]`);
                 title.innerHTML = event.querySelector('.event-title').innerHTML;
             }

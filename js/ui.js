@@ -1,14 +1,11 @@
-const events = document.querySelector('.events');
+// Initialize UI
 document.addEventListener('DOMContentLoaded', function() {
     // Menu
     const menu = document.querySelectorAll('.side-menu');
     M.Sidenav.init(menu, {edge: 'right'});
-    // Form
-    const form = document.querySelectorAll('.side-form');
-    M.Sidenav.init(form, {edge: 'left'});
-    // Edit
-    const edit = document.querySelectorAll('.side-edit');
-    M.Sidenav.init(edit, {edge: 'left'});
+    // Forms
+    const forms = document.querySelectorAll('.side-form');
+    M.Sidenav.init(forms, {edge: 'left'});
     // Modal
     const modal = document.querySelectorAll('.modal');
     M.Modal.init(modal);
@@ -49,12 +46,13 @@ const convert12HourTo24Hour = (time) => {
     return time_split[0] + ':' + time_split[1];
 }
 // Add Event
+const events = document.querySelector('.events');
 const addEvent = (data, id) => {
     let date = (new Date(data.date + 'T00:00:00')).toString().split(' ').slice(0, 4).join(' ');
     let time = convert24hourto12hour(data.time)
     const html = `
         <li class="event" data-id="${id}">
-            <div class="card-panel white row">
+            <div class="card-panel white">
                 <img src="/img/content.png" alt="img">
                 <div class="collapsible-header event-details">
                     <div>
@@ -69,10 +67,10 @@ const addEvent = (data, id) => {
                 <i class="material-icons event-delete modal-trigger" data-target="modal-delete" data-id="${id}">delete_outline</i>
             </div>
             <div class="collapsible-body white">
-                <div>
-                    <div class="event-info event-information">${data.info}</div>
-                    <div class="event-info event-location">${data.location}</div>
-                    <div class="event-info event-time">${time}</div>
+                <div class="event-info">
+                    <div class="event-information">${data.info}</div>
+                    <div class="event-location">${data.location}</div>
+                    <div class="event-time">${time}</div>
                 </div>
             </div>
         </li>
