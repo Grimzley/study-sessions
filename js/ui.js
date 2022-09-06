@@ -63,8 +63,8 @@ const addEvent = (data, id) => {
                         </div>
                     </div>
                 </div>
-                <i class="material-icons event-edit sidenav-trigger" data-target="side-edit" data-id="${id}">edit</i>
-                <i class="material-icons event-delete modal-trigger" data-target="modal-delete" data-id="${id}">delete_outline</i>
+                <i class="material-icons event-edit sidenav-trigger orange-text" data-target="side-edit" data-id="${id}">edit</i>
+                <i class="material-icons event-delete modal-trigger red-text" data-target="modal-delete" data-id="${id}">delete_outline</i>
             </div>
             <div class="collapsible-body white">
                 <div class="event-info">
