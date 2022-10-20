@@ -7,12 +7,12 @@ html, body {
 :root {
     --title: #4D982A;
     --primary: #ADC592;
-    --secondary: #ADBC74;
+    --secondary: #000000;
 }
 /* Layout */
 nav {
     background: var(--primary);
-    border-bottom: 5px solid var(--secondary)
+    border-bottom: 2px solid var(--secondary)
 }
 nav a {
     text-transform: uppercase;
@@ -30,10 +30,10 @@ nav .sidenav-trigger {
 }
 .card-panel {
     margin-bottom: 0;
-    padding: 10px;
+    padding: 5px;
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
-    grid-template-areas: "image details delete";
+    grid-template-areas: "image details options";
     position: relative;
 }
 .delete-header {
@@ -41,11 +41,11 @@ nav .sidenav-trigger {
 }
 .delete-confirm {
     display: inline-block;
-    width: 30%;
+    width: 45%;
 }
 .delete-cancel {
     display: inline-block;
-    width: 40%;
+    width: 45%;
 }
 .card-panel img {
     grid-area: image;
@@ -60,15 +60,16 @@ nav .sidenav-trigger {
     position: absolute;
     bottom: 0px;
     left: 50%;
+    transform: translate(-50%);
 }
 .event-edit {
-    grid-area: delete;
+    grid-area: options;
     position: absolute;
     top: 0px;
     right: 0px;
 }
 .event-delete {
-    grid-area: delete;
+    grid-area: options;
     position: absolute;
     bottom: 0px;
     right: 0px;
@@ -81,6 +82,14 @@ nav .sidenav-trigger {
 }
 .collapsible-body {
     border-bottom: 3px solid var(--title);
+}
+/* Friends */
+.friend-options {
+    grid-area: options;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 /* Form */
 .add-btn {

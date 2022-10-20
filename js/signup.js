@@ -10,7 +10,8 @@ signup.addEventListener('submit', (evt) => {
     // Create User
     auth.createUserWithEmailAndPassword(email, password).then(cred => {
         return db.collection('users').doc(cred.user.uid).set({
-            name: firstName + ' ' + lastName
+            name: firstName + ' ' + lastName,
+            friends: []
         });
     }).then(() => {
         window.location.replace('/pages/home.html');

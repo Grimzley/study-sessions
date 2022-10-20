@@ -83,7 +83,7 @@ const addEvent = (data, id) => {
 const editEvent = (data, id) => {
     const event = document.querySelector(`.event[data-id="${id}"]`);
     event.querySelector('.event-title').innerHTML = data.title;
-    event.querySelector('.event-date').innerHTML = data.date;
+    event.querySelector('.event-date').innerHTML = (new Date(data.date + 'T00:00:00')).toString().split(' ').slice(0, 4).join(' ');
     event.querySelector('.event-information').innerHTML = data.info;
     event.querySelector('.event-location').innerHTML = data.location;
     event.querySelector('.event-time').innerHTML = data.time;
@@ -94,6 +94,24 @@ const editEvent = (data, id) => {
 const removeEvent = (id) => {
     const event = document.querySelector(`.event[data-id="${id}"]`);
     event.remove();
+};
+// Show Friend
+const showFriend = (data, id) => {
+    const friends = document.querySelector('.friends');
+    const html = `
+        <li class="event" data-id="${id}">
+            <div class="card-panel white">
+                <img src="/img/content.png" alt="img">
+                <div class="collapsible-header event-details">
+                    <div>
+                        <div class="event-title">${data.name}</div>
+                    </div>
+                </div>
+                <i class="material-icons friend-options modal-trigger black-text" data-target="modal-options" data-id="${id}">more_horiz</i>
+            </div>
+        </li>
+    `;
+    friends.innerHTML += html;
 };
 // Logout
 const logout = document.querySelector('#logout');

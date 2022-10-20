@@ -41,7 +41,7 @@
             </a>
         </li>
         <li>
-            <a href="/pages/home.html" class="waves-effect">
+            <a href="/pages/friends.html" class="waves-effect">
                 <i class="material-icons">people</i>Friends
             </a>
         </li>
@@ -137,20 +137,18 @@
         </form>
     </div>
     <!-- Delete Event Form -->
-    <div id="modal-delete" class="modal">
-        <div class="modal-content center">
-            <form class="delete-event container section">
-                <div class="delete header grey-text text-darken-1">
-                    <h6>Delete Event: <span class="delete-title"></span>?</h6>
-                </div>
-                <div class="input-field delete-confirm">
-                    <p class="btn-small green confirm">Yes</p>
-                </div>
-                <div class="input-field delete-cancel">
-                    <p class="btn-small red cancel">No</p>
-                </div>
-            </form>
-        </div>
+    <div id="modal-delete" class="modal modal-content center">
+        <form class="delete-event container section">
+            <div class="delete header grey-text text-darken-1">
+                <h6>Delete Event: <span class="delete-title"></span>?</h6>
+            </div>
+            <div class="input-field delete-confirm">
+                <p class="btn-small green confirm">Yes</p>
+            </div>
+            <div class="input-field delete-cancel">
+                <p class="btn-small red cancel">No</p>
+            </div>
+        </form>
     </div>
     <!-- Firestore Database -->
     <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-app.js"></script>
